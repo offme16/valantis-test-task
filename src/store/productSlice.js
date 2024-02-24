@@ -4,8 +4,6 @@ import { getProduct } from "./asyncThunk/getProduct";
 const initialState = {
   isLoading: false,
   error: "",
-  page: "",
-  limit: "",
   products: "",
 };
 export const productSlice = createSlice({
@@ -18,14 +16,14 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registUser.pending, (state, action) => {
+      .addCase(getProduct.pending, (state, action) => {
         state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(registUser.fulfilled, (state, action) => {
+      .addCase(getProduct.fulfilled, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(registUser.rejected, (state, action) => {
+      .addCase(getProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
