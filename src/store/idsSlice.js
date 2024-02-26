@@ -4,19 +4,15 @@ import { getIds } from "./asyncThunk/getIds";
 const initialState = {
   isLoading: false,
   error: "",
-  ids: undefined,
-  offset: 1,
-  limit: 50,
+  ids: [],
+  offset: "",
+  limit: "",
   currentPage: 1,
 };
 export const idsSlice = createSlice({
   name: "Ids",
   initialState,
-  reducers: {
-    setIds: (state, action) => {
-      state.ids = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getIds.pending, (state, action) => {
@@ -25,6 +21,7 @@ export const idsSlice = createSlice({
       })
       .addCase(getIds.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.ids = action.payload;
       })
       .addCase(getIds.rejected, (state, action) => {
         state.isLoading = false;

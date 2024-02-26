@@ -8,8 +8,7 @@ export const getIds = createAsyncThunk(
             if (!response.data) {
                 throw new Error();
             }
-            console.log(response.data)
-            return response.data;
+            return response.data.result;
         } catch (e) {
             console.log(e.message);
             return thunkAPI.rejectWithValue('Произошла ошибка');
