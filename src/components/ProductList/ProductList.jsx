@@ -6,6 +6,7 @@ export const ProductList = (props) => {
     const items = useSelector(state => state.Products.products)
     const dispatch = useDispatch();
     const ids = props.ids;
+    const isLoading = useSelector(state => state.Products.isLoading)
 
     
     useEffect(() => {
@@ -16,7 +17,7 @@ export const ProductList = (props) => {
     }, [dispatch, props]); 
     return (
         <div>
-             {items ? <ol>{items.map(e => <li key={e.id}> {e.brand} , {e.price} , {e.product}</li>)}</ol> : <h1>Loading</h1>}
+             {!isLoading ? <ol>{items.map(e => <li key={e.id}> <>{e.brand ? e.brand : <p>Noname</p>}</> , {e.price} , {e.product}</li>)}</ol> : <h1>Loading</h1>}
         </div>
     )
 }

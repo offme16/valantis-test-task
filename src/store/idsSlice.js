@@ -5,14 +5,19 @@ const initialState = {
   isLoading: false,
   error: "",
   ids: [],
-  offset: "",
-  limit: "",
+  offset: 0,
+  limit: 50,
   currentPage: 1,
 };
 export const idsSlice = createSlice({
   name: "Ids",
   initialState,
-  reducers: {},
+  reducers: {
+    updateOffsetAndPage: (state, action) => {
+      state.offset = action.payload.offset;
+      state.currentPage = action.payload.currentPage;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getIds.pending, (state, action) => {
