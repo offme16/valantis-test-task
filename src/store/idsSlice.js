@@ -8,6 +8,7 @@ const initialState = {
   offset: 0,
   limit: 50,
   currentPage: 1,
+  retryAttempts: 0
 };
 export const idsSlice = createSlice({
   name: "Ids",

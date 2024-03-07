@@ -1,5 +1,5 @@
 import React from 'react';
-
+import style from "./Pagination.module.css"
 const Pagination = ({currentPage, onChangePage}) => {
 
     const handlePrevPage = () => {
@@ -13,9 +13,9 @@ const Pagination = ({currentPage, onChangePage}) => {
     };
 
     return (
-        <div>
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>Prev</button>
-            <button onClick={handleNextPage}>Next</button>
+        <div className={style.btns}>
+            <button className={style.btn} onClick={handlePrevPage} disabled={currentPage === 1}>Prev</button>
+            <button className={style.btn} onClick={handleNextPage}>Next</button>
         </div>
     );
 };
